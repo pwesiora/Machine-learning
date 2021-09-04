@@ -55,10 +55,7 @@ FRAME_THICKNESS = 3
 FONT_THICKNESS = 2
 MODEL = 'cnn' # default: 'hog', other one can be 'cnn' - CUDA accelerated (if available) deep-learning pretrained model
 
-# Returns (R, G, B) from DanielOrtega
 def name_to_color(name):
-# Take 3 first letters, tolower()
-# lowercased character ord() value rage is 97 to 122, substract 97, multiply by 8
     color = [(ord(c.lower()) - 97) * 8 for c in name[:3]]
     return color
 
@@ -89,7 +86,6 @@ for filename in os.listdir(UNKNOWN_FACES_DIR):
             print(f' - {match} from {results}')
             top_left = (face_location[3], face_location[0])
             bottom_right = (face_location[1], face_location[2])
-            # Get color by DanielOrtega using our fancy function color = name_to_color(match) # Paint
             color = name_to_color(match)
             cv2.rectangle(image, top_left, bottom_right, color,FRAME_THICKNESS)
             top_left = (face_location[3], face_location[2])
